@@ -7,7 +7,6 @@ export const renderImages = (gridEl, items = []) => {
     const src = isString ? item : item.urls?.regular || item.url
     const alt = isString ? '' : item.alt_description || item.title || ''
     const link = !isString ? item.links?.html : null
-    const color = !isString ? item.color : null
 
     if (!src) return
 
@@ -16,23 +15,19 @@ export const renderImages = (gridEl, items = []) => {
     img.alt = alt
     img.loading = 'lazy'
 
-    let element = img
+    // ✅ look Pinterest (mínimo)
+    img.style.width = '100%'
+    img.style.display = 'block'
+    img.style.borderRadius = '14px'
 
-    if (color) {
-      const div = document.createElement('div')
-      div.style.borderRadius = '14px'
-      div.style.border = `2px solid ${color}`
-      div.style.display = 'block'
-      div.appendChild(img)
-      element = div
-    }
+    let element = img
 
     if (link) {
       const anchor = document.createElement('a')
       anchor.href = link
       anchor.target = '_blank'
       anchor.rel = 'noopener noreferrer'
-      anchor.appendChild(element)
+      anchor.appendChild(img)
       element = anchor
     }
 

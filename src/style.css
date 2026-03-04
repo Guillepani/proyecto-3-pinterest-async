@@ -19,6 +19,8 @@ body {
   margin: 0 auto;
 }
 
+/* ---------- TOPBAR ---------- */
+
 .topbar {
   display: flex;
   gap: 16px;
@@ -38,7 +40,10 @@ body {
 .logo {
   margin: 0;
   font-size: 20px;
+  cursor: pointer;
 }
+
+/* ---------- SEARCH ---------- */
 
 .search {
   display: flex;
@@ -63,30 +68,54 @@ body {
   cursor: pointer;
 }
 
+/* ---------- GRID PINTEREST ---------- */
+
 .grid {
   column-count: 4;
   column-gap: 16px;
 }
+
+/* evita que los elementos se rompan entre columnas */
+.grid > * {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+/* si render.js envuelve imágenes en <a> */
+.grid a {
+  display: block;
+}
+
+/* imágenes */
+
+.grid img {
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+  transition: transform 0.15s ease;
+}
+
+/* pequeño efecto hover opcional */
+.grid a:hover img {
+  transform: scale(1.01);
+}
+
+/* ---------- RESPONSIVE ---------- */
 
 @media (max-width: 900px) {
   .grid {
     column-count: 3;
   }
 }
+
 @media (max-width: 650px) {
   .grid {
     column-count: 2;
   }
 }
+
 @media (max-width: 420px) {
   .grid {
     column-count: 1;
   }
-}
-
-.grid img {
-  width: 100%;
-  margin-bottom: 16px;
-  border-radius: 14px;
-  display: block;
 }

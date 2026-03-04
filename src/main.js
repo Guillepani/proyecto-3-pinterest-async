@@ -28,12 +28,8 @@ const grid = document.querySelector('#grid')
 // estado inicial: array de objetos (mock tipo Unsplash)
 const initialImages = getDemoImagesMock()
 
-// helper para extraer URLs compatibles con render.js
-const toUrls = (images) =>
-  images.map((it) => (it.urls && it.urls.regular ? it.urls.regular : it))
-
 // render inicial
-renderImages(grid, toUrls(initialImages))
+renderImages(grid, initialImages)
 
 // manejar búsqueda
 const form = document.querySelector('#searchForm')
@@ -44,11 +40,11 @@ form.addEventListener('submit', (e) => {
   e.preventDefault()
   const query = input.value || ''
   const results = searchImages(query, initialImages)
-  renderImages(grid, toUrls(results))
+  renderImages(grid, results)
   input.value = ''
 })
 
 // reset por click en logo al estado inicial
 logo.addEventListener('click', () => {
-  renderImages(grid, toUrls(initialImages))
+  renderImages(grid, initialImages)
 })

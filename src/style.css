@@ -19,7 +19,7 @@ body {
   margin: 0 auto;
 }
 
-/* ---------- TOPBAR ---------- */
+/*  TOPBAR */
 
 .topbar {
   display: flex;
@@ -43,7 +43,7 @@ body {
   cursor: pointer;
 }
 
-/* ---------- SEARCH ---------- */
+/* SEARCH */
 
 .search {
   display: flex;
@@ -68,7 +68,7 @@ body {
   cursor: pointer;
 }
 
-/* ---------- GRID PINTEREST ---------- */
+/* GRID PINTEREST */
 
 .grid {
   column-count: 4;
@@ -86,7 +86,7 @@ body {
   display: block;
 }
 
-/* imágenes */
+/* imagenes */
 
 .grid img {
   width: 100%;
@@ -95,12 +95,12 @@ body {
   transition: transform 0.15s ease;
 }
 
-/* pequeño efecto hover opcional */
+/*efecto hover opcional */
 .grid a:hover img {
   transform: scale(1.01);
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* RESPONSIVE  */
 
 @media (max-width: 900px) {
   .grid {

@@ -15,7 +15,7 @@ export const renderImages = (gridEl, items = []) => {
     img.alt = alt
     img.loading = 'lazy'
 
-    // ✅ look Pinterest (mínimo)
+    // look Pinterest (mínimo)
     img.style.width = '100%'
     img.style.display = 'block'
     img.style.borderRadius = '14px'

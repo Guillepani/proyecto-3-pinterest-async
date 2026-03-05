@@ -10,6 +10,7 @@ export const renderImages = (gridEl, items = []) => {
 
     if (!src) return
 
+    //crear los nodos del DOM desde JS
     const img = document.createElement('img')
     img.src = src
     img.alt = alt

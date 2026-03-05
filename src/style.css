@@ -1,106 +1,173 @@
-:root {
-  font-family:
-    system-ui,
-    -apple-system,
-    Segoe UI,
-    Roboto,
-    Arial,
-    sans-serif;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 24px;
-  background: #fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #ffffff;
+  color: #111;
 }
+
+/* APP */
 
 .app {
-  max-width: 1100px;
-  margin: 0 auto;
+  min-height: 100vh;
 }
 
-/*  TOPBAR */
+/* HEADER */
 
 .topbar {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: space-between;
-
   position: sticky;
   top: 0;
-  background: rgba(250, 250, 250, 0.9);
-  backdrop-filter: blur(8px);
-
-  padding: 12px 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 24px;
   border-bottom: 1px solid #eee;
-  margin-bottom: 18px;
+  z-index: 10;
 }
 
-.logo {
-  margin: 0;
-  font-size: 20px;
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* PINTEREST BUTTON */
+
+.pinBtn {
+  background: none;
+  border: none;
   cursor: pointer;
+}
+
+.pinBtn svg {
+  width: 28px;
+  height: 28px;
+  fill: #e60023;
+}
+
+/* NAV */
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav__item {
+  border: none;
+  background: transparent;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.nav__item--active {
+  background: #000;
+  color: white;
 }
 
 /* SEARCH */
 
 .search {
-  display: flex;
-  gap: 10px;
-  width: min(520px, 100%);
+  flex: 1;
+}
+
+.search__wrap {
+  position: relative;
+  width: 100%;
+}
+
+.search__icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  fill: #777;
 }
 
 .search__input {
-  flex: 1;
-  padding: 10px 14px;
-  border: 1px solid #e6e6e6;
+  width: 100%;
+  border: none;
+  background: #efefef;
+  padding: 10px 12px 10px 36px;
   border-radius: 999px;
-  background: white;
+  font-size: 14px;
+}
+
+.search__input:focus {
   outline: none;
 }
 
-.search__btn {
-  padding: 10px 14px;
-  border: 1px solid #e6e6e6;
-  border-radius: 999px;
-  background: white;
+/* RIGHT SIDE */
+
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.iconBtn svg {
+  width: 22px;
+  height: 22px;
+  fill: #555;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #ddd;
+  font-weight: bold;
   cursor: pointer;
 }
 
 /* GRID PINTEREST */
 
 .grid {
-  column-count: 4;
+  column-count: 5;
   column-gap: 16px;
+  padding: 20px;
 }
-
-/* evita que los elementos se rompan entre columnas */
-.grid > * {
-  break-inside: avoid;
-  margin-bottom: 16px;
-}
-
-/* si render.js envuelve imágenes en <a> */
-.grid a {
-  display: block;
-}
-
-/* imagenes */
 
 .grid img {
   width: 100%;
-  border-radius: 14px;
+  border-radius: 16px;
+  margin-bottom: 16px;
   display: block;
-  transition: transform 0.15s ease;
 }
 
-/*efecto hover opcional */
-.grid a:hover img {
-  transform: scale(1.01);
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+  font-size: 14px;
 }
 
-/* RESPONSIVE  */
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+  .grid {
+    column-count: 4;
+  }
+}
 
 @media (max-width: 900px) {
   .grid {
@@ -108,14 +175,8 @@ body {
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   .grid {
     column-count: 2;
-  }
-}
-
-@media (max-width: 420px) {
-  .grid {
-    column-count: 1;
   }
 }

@@ -130,7 +130,7 @@ const buildApp = () => {
   // FOOTER
   const footer = document.createElement('footer')
   footer.className = 'footer'
-  footer.textContent = `© ${new Date().getFullYear()} Pinterest Async · Mock (sin API)`
+  footer.textContent = `© ${new Date().getFullYear()} Pinterest Async by Guillem Paniagua for RockTheCode Bootcamp`
 
   main.append(header, grid, footer)
   app.append(main)

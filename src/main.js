@@ -1,6 +1,6 @@
 import './style.css'
 import { renderImages } from './js/render.js'
-import { getDemoImagesMock, searchImages } from './js/data.js'
+import { getPhotos } from './js/api.js'
 
 const $ = (selector, root = document) => root.querySelector(selector)
 
@@ -138,22 +138,23 @@ const buildApp = () => {
   return { grid, form, input, pinBtn, linkInicio }
 }
 
-const init = () => {
+const init = async () => {
   const { grid, form, input, pinBtn, linkInicio } = buildApp()
 
-  const initialImages = getDemoImagesMock()
+  const initialImages = await getPhotos()
   renderImages(grid, initialImages)
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault()
     const query = input.value || ''
-    const results = searchImages(query, initialImages)
+    const results = await getPhotos(query)
     renderImages(grid, results)
   })
 
-  const reset = () => {
+  const reset = async () => {
     input.value = ''
-    renderImages(grid, initialImages)
+    const defaultImages = await getPhotos()
+    renderImages(grid, defaultImages)
   }
 
   pinBtn.addEventListener('click', reset)

@@ -1,2 +1,19 @@
-# proyecto-3-pinterest-async
-Proyecto 3 del bootcamp: aplicación tipo Pinterest que consume la API de Unsplash usando JavaScript asíncrono (async/await) y construida con Vite.
+# Pinterest Async - proyecto 3
+
+Proyecto del Bootcamp RockTheCode.
+
+## Funcionalidades
+
+- Consumo de API de Unsplash
+- Búsqueda de imágenes
+- Grid estilo Pinterest
+- Render dinámico con JavaScript
+- Diseño responsive
+
+## Tecnologías
+
+- HTML
+- CSS
+- JavaScript
+- Vite
+- Unsplash API

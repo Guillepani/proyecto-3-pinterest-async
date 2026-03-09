@@ -146,8 +146,13 @@ const init = async () => {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
-    const query = input.value || ''
+
+    const query = input.value.trim()
+
+    input.value = '' // limpia el input después de buscar
+
     const results = await getPhotos(query)
+
     renderImages(grid, results)
   })
 

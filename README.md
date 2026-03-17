@@ -1,6 +1,7 @@
 # Pinterest Async - proyecto 3
 
 Proyecto del Bootcamp RockTheCode.
+Puedes probarla en este enlace ---> https://pinterestreplik.netlify.app/
 
 ## Funcionalidades
 

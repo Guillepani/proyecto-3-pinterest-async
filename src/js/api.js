@@ -12,13 +12,9 @@ const fetchJson = async (url) => {
 }
 
 const getPhotoStatistics = async (photoId) => {
-  try {
-    return await fetchJson(
-      `${BASE_URL}/photos/${photoId}/statistics?client_id=${ACCESS_KEY}`
-    )
-  } catch {
-    return null
-  }
+  return fetchJson(
+    `${BASE_URL}/photos/${photoId}/statistics?client_id=${ACCESS_KEY}`
+  )
 }
 
 export const getPhotos = async (query = 'nature') => {
@@ -26,29 +22,34 @@ export const getPhotos = async (query = 'nature') => {
     throw new Error('Falta la variable de entorno VITE_ACCESS_KEY')
   }
 
-  const randomPage = Math.floor(Math.random() * 10) + 1
-
   try {
     const data = await fetchJson(
-      `${BASE_URL}/search/photos?query=${encodeURIComponent(query)}&per_page=12&page=${randomPage}&client_id=${ACCESS_KEY}`
+      `${BASE_URL}/search/photos?query=${encodeURIComponent(query)}&per_page=20&page=1&client_id=${ACCESS_KEY}`
     )
 
     const results = data.results || []
 
-    const enrichedResults = await Promise.all(
-      results.map(async (photo) => {
-        const statistics = await getPhotoStatistics(photo.id)
+    if (!results.length) return []
 
-        return {
-          ...photo,
-          statistics
-        }
-      })
+    const statisticsResults = await Promise.allSettled(
+      results.map((photo) => getPhotoStatistics(photo.id))
     )
 
-    return enrichedResults
+    const enrichedPhotos = results.map((photo, index) => {
+      const statistics = statisticsResults[index]
+
+      return {
+        ...photo,
+        statistics:
+          statistics.status === 'fulfilled'
+            ? statistics.value
+            : { views: { total: 0 } }
+      }
+    })
+
+    return enrichedPhotos
   } catch (error) {
     console.error('Error al obtener imágenes:', error)
-    throw error
+    return []
   }
 }

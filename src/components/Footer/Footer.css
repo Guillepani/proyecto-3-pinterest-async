@@ -1,0 +1,14 @@
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 14px 10px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
